@@ -1,7 +1,9 @@
 package com.yjy.infrastructure.persistent.po;
 
-import java.util.Date;
+import lombok.Data;
 
+import java.util.Date;
+@Data
 public class StrategyRule {
     /** 自增ID */
     private Long id;

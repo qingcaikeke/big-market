@@ -12,3 +12,18 @@ app层引用infrastructure和trigger
 
 领域建模--数据结构--数据库设计
 1.分析抽奖的行为逻辑，设计抽奖策略领域模型和对应的库表结构
+
+第3节
+通过persistent中的repository对redis进行调用
+domain领域中，策略装配兵工厂会通过策略仓储服务完成策略的装配
+
+entity比po少几个字段
+ddd中需要什么值 不是通过dao（mapper去调） 而是通过基础层去调 
+例如domain中 strategy的repository只提供了接口，实现类在基础层的repository
+
+先写StrategyArmory，再写接口，再写infrastructure中的实现，再写mapper
+抽奖领域需要完成策略的装配，装配通过infrastructure实现
+
+
+面试题，项目亮点，我的抽奖可以实现，多少2000，4000，6000积分抽不同的奖品类型，是通过装配实现的
+装一个docker redis admin
