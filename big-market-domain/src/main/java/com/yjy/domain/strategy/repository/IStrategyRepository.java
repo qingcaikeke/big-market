@@ -5,6 +5,7 @@ package com.yjy.domain.strategy.repository;
 import com.yjy.domain.strategy.model.entity.StrategyAwardEntity;
 import com.yjy.domain.strategy.model.entity.StrategyEntity;
 import com.yjy.domain.strategy.model.entity.StrategyRuleEntity;
+import com.yjy.domain.strategy.model.vo.StrategyAwardRuleModelVO;
 
 import java.util.List;
 import java.util.Map;
@@ -40,6 +41,13 @@ public interface IStrategyRepository {
     int getRateRange(String key);
     //查询策略id包含哪几种抽奖规则
     StrategyEntity queryStrategyEntityByStrategyId(Long strategyId);
-    //查到给定策略id下的rule_weight下的信息，示例：104,105,106,107,108,109
+    //查到给定策略id下的rule_weight下的信息，示例：104,105,106,107,108,109(查的是整条记录)
     StrategyRuleEntity queryStrategyRule(Long strategyId, String ruleWeight);
+
+    //从strategy_rule表中查到rule_val,如100:user001,user002,user003（查的是值对象）
+    String queryStrategyRuleValue(Long strategyId, Integer awardId, String ruleModel);
+
+    //用于中置规则，查的是抽到的奖品，有什么规则，如6次后才能解锁
+    //rule_models:    rule_lock,rule_luck_award
+    StrategyAwardRuleModelVO queryStrategyAwardRuleModelVO(Long strategyId, Integer awardId);
 }

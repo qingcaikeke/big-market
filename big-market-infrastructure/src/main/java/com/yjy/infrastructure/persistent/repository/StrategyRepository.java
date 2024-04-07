@@ -3,6 +3,7 @@ package com.yjy.infrastructure.persistent.repository;
 import com.yjy.domain.strategy.model.entity.StrategyAwardEntity;
 import com.yjy.domain.strategy.model.entity.StrategyEntity;
 import com.yjy.domain.strategy.model.entity.StrategyRuleEntity;
+import com.yjy.domain.strategy.model.vo.StrategyAwardRuleModelVO;
 import com.yjy.domain.strategy.repository.IStrategyRepository;
 import com.yjy.infrastructure.persistent.dao.IStrategyAwardDao;
 import com.yjy.infrastructure.persistent.dao.IStrategyDao;
@@ -114,6 +115,28 @@ public class StrategyRepository implements IStrategyRepository {
                 .ruleValue(strategyRuleRes.getRuleValue())
                 .ruleDesc(strategyRuleRes.getRuleDesc())
                 .build();
+    }
+
+    /**
+     * 用于前置规则，查的是类似  100:user001,user002,user003
+     */
+    @Override
+    public String queryStrategyRuleValue(Long strategyId, Integer awardId, String ruleModel) {
+        StrategyRule strategyRule = new StrategyRule();
+        strategyRule.setStrategyId(strategyId);
+        strategyRule.setAwardId(awardId);
+        strategyRule.setRuleModel(ruleModel);
+        return strategyRuleDao.queryStrategyRuleValue(strategyRule);
+    }
+    //用于中置规则，查的是抽到的奖品，有什么规则，如6次后才能解锁
+    //rule_models:    rule_lock,rule_luck_award
+    @Override
+    public StrategyAwardRuleModelVO queryStrategyAwardRuleModelVO(Long strategyId, Integer awardId) {
+        StrategyAward strategyAward = new StrategyAward();
+        strategyAward.setStrategyId(strategyId);
+        strategyAward.setAwardId(awardId);
+        String ruleModels = strategyAwardDao.queryStrategyAwardRuleModels(strategyAward);
+        return StrategyAwardRuleModelVO.builder().ruleModels(ruleModels).build();
     }
 
 

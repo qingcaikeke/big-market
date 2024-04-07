@@ -39,6 +39,10 @@ public class StrategyArmoryDispatch implements IStrategyArmory,IStrategyDispatch
         // 2. 权重策略配置 - 适用于 rule_weight 权重规则配置
         // 查询策略id包含哪几种抽奖规则 ， 目前只关心是否有rule——weight ，积分越多积分越好
         StrategyEntity strategyEntity = repository.queryStrategyEntityByStrategyId(strategyId);
+        if(strategyEntity == null) {
+            System.out.println("aaaa");
+            return true;
+        }
         String ruleWeight = strategyEntity.getRuleWeight();
         if (null == ruleWeight) return true;
 
