@@ -5,7 +5,7 @@ import lombok.Getter;
 
 /**
  * @author yjy
- * @description 规则过滤校验类型值对象
+ * @description 规则过滤校验类型值对象  放行或接管
  * @create 用于与规则过滤后返回的行为实体信息比较，确定是继续进行还是直接返回
  */
 @Getter

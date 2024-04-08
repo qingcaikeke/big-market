@@ -17,6 +17,7 @@ public class DefaultChainFactory {
     //注入map有两种方式
     //1. 通过自定义注解+枚举 @LogicStrategy(logicMode = DefaultLogicFactory.LogicModel.RULE_BLACKLIST)
     //2.@Component("rule_blacklist") +     protected String ruleModel() {}
+    //本质上是省略@resourse，根据bean名字和类型完成map注入
     private final Map<String, ILogicChain> logicChainGroup;
     protected IStrategyRepository repository;
 

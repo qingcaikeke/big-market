@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 
 /**
- * @author Fuzhengwei bugstack.cn @小傅哥
+ * @author yjy
  * @description 策略奖品实体
  * @create 2023-12-23 10:48
  */
