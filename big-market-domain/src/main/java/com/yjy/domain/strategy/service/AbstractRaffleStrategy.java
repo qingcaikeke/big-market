@@ -1,12 +1,9 @@
-package com.yjy.domain.strategy.service.raffle;
+package com.yjy.domain.strategy.service;
 
-import com.yjy.domain.strategy.model.entity.*;
-import com.yjy.domain.strategy.model.vo.RuleLogicCheckTypeVO;
-import com.yjy.domain.strategy.model.vo.StrategyAwardRuleModelVO;
+import com.yjy.domain.strategy.model.entity.RaffleAwardEntity;
+import com.yjy.domain.strategy.model.entity.RaffleFactorEntity;
 import com.yjy.domain.strategy.repository.IStrategyRepository;
-import com.yjy.domain.strategy.service.IRaffleStrategy;
 import com.yjy.domain.strategy.service.armory.IStrategyDispatch;
-import com.yjy.domain.strategy.service.rule.chain.ILogicChain;
 import com.yjy.domain.strategy.service.rule.chain.factory.DefaultChainFactory;
 import com.yjy.domain.strategy.service.rule.tree.factory.DefaultTreeFactory;
 import com.yjy.types.enums.ResponseCode;
@@ -15,9 +12,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * @author yjy 已再第九节重构，放在service包下
+ * @author yjy
  * @description 抽奖策略抽象类，定义抽奖的标准流程
- * @create 模板方法的设计模式？
+ * @create 模板模式，定义标准的执行流程，从责任链到规则树
  */
 @Slf4j
 public abstract class AbstractRaffleStrategy implements IRaffleStrategy {
@@ -27,7 +24,7 @@ public abstract class AbstractRaffleStrategy implements IRaffleStrategy {
     // 策略调度服务 -> 只负责抽奖处理，通过新增接口的方式，隔离职责，不需要使用方关心或者调用抽奖的初始化
     protected IStrategyDispatch strategyDispatch;
     // 抽奖的责任链 -> 从抽奖的规则中，解耦出前置规则为责任链处理
-    private final DefaultChainFactory defaultChainFactory;
+    protected final DefaultChainFactory defaultChainFactory;
     // 抽奖的决策树 -> 负责抽奖中到抽奖后的规则过滤，如抽奖到A奖品ID，之后要做次数的判断和库存的扣减等。
     protected final DefaultTreeFactory defaultTreeFactory;
 

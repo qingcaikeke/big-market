@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 public class RuleTreeNodeLineVO {
 
     /** 规则树ID */
-    private Integer treeId;
+    private String treeId;
     /** 规则Key节点 From */
     private String ruleNodeFrom;
     /** 规则Key节点 To */
@@ -25,7 +25,7 @@ public class RuleTreeNodeLineVO {
     /** 限定类型；1:=;2:>;3:<;4:>=;5<=;6:enum[枚举范围] */
     private RuleLimitTypeVO ruleLimitType;
     /** 限定值（到下个节点） */
-    //放行或接管
+    //放行或接管,连线上的val是为判断该往作还是右走
     private RuleLogicCheckTypeVO ruleLimitValue;
 
 }

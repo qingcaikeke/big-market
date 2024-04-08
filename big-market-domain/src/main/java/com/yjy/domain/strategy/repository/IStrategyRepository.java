@@ -5,6 +5,7 @@ package com.yjy.domain.strategy.repository;
 import com.yjy.domain.strategy.model.entity.StrategyAwardEntity;
 import com.yjy.domain.strategy.model.entity.StrategyEntity;
 import com.yjy.domain.strategy.model.entity.StrategyRuleEntity;
+import com.yjy.domain.strategy.model.vo.RuleTreeVO;
 import com.yjy.domain.strategy.model.vo.StrategyAwardRuleModelVO;
 
 import java.util.List;
@@ -50,4 +51,6 @@ public interface IStrategyRepository {
     //用于中置规则，查的是抽到的奖品，有什么规则，如6次后才能解锁
     //rule_models:    rule_lock,rule_luck_award
     StrategyAwardRuleModelVO queryStrategyAwardRuleModelVO(Long strategyId, Integer awardId);
+    //根据规则树id，查规则树信息
+    RuleTreeVO queryRuleTreeVOByTreeId(String treeId);
 }
