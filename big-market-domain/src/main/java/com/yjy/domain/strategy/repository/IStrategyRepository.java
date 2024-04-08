@@ -45,8 +45,8 @@ public interface IStrategyRepository {
     StrategyRuleEntity queryStrategyRule(Long strategyId, String ruleWeight);
 
     //从strategy_rule表中查到rule_val,如100:user001,user002,user003（查的是值对象）
+    String queryStrategyRuleValue(Long strategyId, String ruleModel);
     String queryStrategyRuleValue(Long strategyId, Integer awardId, String ruleModel);
-
     //用于中置规则，查的是抽到的奖品，有什么规则，如6次后才能解锁
     //rule_models:    rule_lock,rule_luck_award
     StrategyAwardRuleModelVO queryStrategyAwardRuleModelVO(Long strategyId, Integer awardId);

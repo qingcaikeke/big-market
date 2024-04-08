@@ -1,6 +1,6 @@
 package com.yjy.domain.strategy.model.vo;
 
-import com.yjy.domain.strategy.service.rule.factory.DefaultLogicFactory;
+import com.yjy.domain.strategy.service.rule.filter.factory.DefaultLogicFactory;
 import com.yjy.types.common.Constants;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

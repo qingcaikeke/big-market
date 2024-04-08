@@ -1,8 +1,8 @@
-package com.yjy.domain.strategy.service.rule.factory;
+package com.yjy.domain.strategy.service.rule.filter.factory;
 
 import com.yjy.domain.strategy.model.entity.RuleActionEntity;
 import com.yjy.domain.strategy.service.annotation.LogicStrategy;
-import com.yjy.domain.strategy.service.rule.ILogicFilter;
+import com.yjy.domain.strategy.service.rule.filter.ILogicFilter;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.core.annotation.AnnotationUtils;
@@ -19,7 +19,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 @Service
 public class DefaultLogicFactory {
-
+    //自定义注解，写对应的枚举值，完成map注入
     public Map<String, ILogicFilter<?>> logicFilterMap = new ConcurrentHashMap<>();
 
     public DefaultLogicFactory(List<ILogicFilter<?>> logicFilters) {

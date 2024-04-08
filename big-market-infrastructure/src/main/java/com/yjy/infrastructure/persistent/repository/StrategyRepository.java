@@ -117,6 +117,11 @@ public class StrategyRepository implements IStrategyRepository {
                 .build();
     }
 
+    @Override
+    public String queryStrategyRuleValue(Long strategyId, String ruleModel) {
+        return queryStrategyRuleValue(strategyId, null, ruleModel);
+    }
+
     /**
      * 用于前置规则，查的是类似  100:user001,user002,user003
      */
